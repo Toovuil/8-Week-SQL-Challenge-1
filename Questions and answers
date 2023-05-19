@@ -1,5 +1,10 @@
 
 --1.	What is the total amount each customer spent at the restaurant?
+•	A = 76
+•	B = 74
+•	C = 36
+
+
 SELECT  customer_id, SUM(price) as price
 FROM Dannys_Diner.dbo.sales
 join Dannys_Diner.dbo.menu
@@ -8,12 +13,19 @@ group by Dannys_Diner.dbo.sales.customer_id;
 
 
 --2.	How many days has each customer visited the restaurant?
+•	A = 4
+•	B = 6
+•	C = 2
+
+
 select customer_id, COUNT(DISTINCT order_date) as DaysVisited
 from Dannys_Diner.dbo.sales
 group by Dannys_Diner.dbo.sales.customer_id;
 
 
 --3.	What was the first item from the menu purchased by each customer?
+--need help on this
+
 select customer_id, product_name, order_date
 from Dannys_Diner.dbo.sales
 join Dannys_Diner.dbo.menu
@@ -22,6 +34,8 @@ Order by Dannys_Diner.dbo.sales.order_date;
 
 
 --4.   What is the most purchased item on the menu and how many times was it purchased by all customers?
+a.	Ramen 8
+
 Select Top 1 (m.product_name), COUNT(s.product_id) as no_of_purchases
 from menu m
 join sales s on m.product_id = s.product_id
@@ -34,6 +48,7 @@ from sales
 group by product_id;
 
 --5.	Which item was the most popular for each customer?
+-- still busy
 select customer_id,product_id, count (product_id) as times_purchased
 from sales 
 group by  product_id, customer_id
